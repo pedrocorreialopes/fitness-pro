@@ -313,4 +313,4 @@ Este projeto é desenvolvido por **Pedro Correia Lopes Filho** e está disponív
 
 ---
 
-**Fitness Pro - Transformando vidas através de tecnologia e saúde** 💪✨# fitness-pro
+**Fitness Pro - Transformando vidas através de tecnologia e saúde** 💪✨

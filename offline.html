@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Pro - Offline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .offline-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .offline-icon {
+            font-size: 80px;
+            color: #f59e0b;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            color: #1f2937;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .offline-features {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .offline-features h3 {
+            color: #1f2937;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .retry-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .retry-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .offline-tips {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+
+        .offline-tips h4 {
+            color: #92400e;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .offline-tips p {
+            color: #78350f;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .offline-icon {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        
+        <h1>Você está offline</h1>
+        
+        <p>Não se preocupe! O Fitness Pro continua funcionando mesmo sem conexão com a internet.</p>
+        
+        <div class="offline-features">
+            <h3>O que você pode fazer offline:</h3>
+            <ul class="feature-list">
+                <li>Calcular seu IMC e ver recomendações</li>
+                <li>Explorar todos os exercícios com descrições</li>
+                <li>Visualizar planos de treino completos</li>
+                <li>Acessar planos alimentares detalhados</li>
+                <li>Usar o cronômetro de descanso</li>
+                <li>Ver estatísticas e informações sobre fitness</li>
+            </ul>
+        </div>
+        
+        <div class="offline-tips">
+            <h4>Dica:</h4>
+            <p>Conecte-se à internet novamente para sincronizar seus dados e acessar as últimas atualizações!</p>
+        </div>
+        
+        <a href="/" class="retry-button">Tentar Novamente</a>
+    </div>
+
+    <script>
+        // Verifica se a conexão foi restaurada
+        window.addEventListener('online', function() {
+            window.location.href = '/';
+        });
+
+        // Tenta reconectar automaticamente após 5 segundos
+        setTimeout(function() {
+            if (navigator.onLine) {
+                window.location.href = '/';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

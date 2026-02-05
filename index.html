@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicativo completo de treinos para academia com cálculo de IMC, cronômetro de descanso e planos alimentares">
+    <meta name="keywords" content="academia, treinos, IMC, fitness, exercícios, cronômetro">
+    <meta property="og:title" content="Fitness Pro - Seu Personal Trainer Digital">
+    <meta property="og:description" content="Aplicativo completo para gerenciamento de treinos, cálculo de IMC e planos alimentares">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#2563eb">
+    
+    <title>Fitness Pro - Seu Personal Trainer Digital</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Fitness Pro">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9IiMyNTYzZWIiLz4KPHN2ZyB4PSI0NSIgeT0iNDUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0yMC41NyA5LjIzTDE0IDE2LjM5VjExYzAtMS4xLS45LTItMi0yaC00djZjMCAxLjEuOSAyIDIgMmg0djYuMzlsNi41Ny03LjE2YTEuOTkgMS45OSAwIDAgMCAwLTIuN3pNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptMCAxOGMtNC40MSAwLTgtMy41OS04LThzMy41OS04IDgtOCA4IDMuNTkgOCA4LTMuNTkgOC04IDh6bTEtMTNoLTJ2Nmgydi02em0wLThoLTJ2Mmgydi0yeiIvPgo8L3N2Zz4KPC9zdmc+Cg==">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fitness Pro",
+        "description": "Aplicativo de treinos e nutrição para academia",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web"
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="skip-link">Pular para conteúdo principal</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                    <h1>Fitness Pro</h1>
+                </div>
+                
+                <nav class="nav" role="navigation" aria-label="Navegação principal">
+                    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav__list" role="menubar">
+                        <li class="nav__item" role="none">
+                            <a href="#home" class="nav__link active" role="menuitem" aria-current="page">
+                                <i class="fas fa-home" aria-hidden="true"></i>
+                                <span>Início</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#imc" class="nav__link" role="menuitem">
+                                <i class="fas fa-calculator" aria-hidden="true"></i>
+                                <span>Calcular IMC</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#treinos" class="nav__link" role="menuitem">
+                                <i class="fas fa-running" aria-hidden="true"></i>
+                                <span>Treinos</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#alimentacao" class="nav__link" role="menuitem">
+                                <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                                <span>Alimentação</span>
+                            </a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#cronometro" class="nav__link" role="menuitem">
+                                <i class="fas fa-stopwatch" aria-hidden="true"></i>
+                                <span>Cronômetro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="header__actions">
+                    <button class="theme-toggle" aria-label="Alternar tema" aria-pressed="false">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                        <i class="fas fa-sun" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="main" role="main">
+        
+        <!-- Home Section -->
+        <section id="home" class="section section--home" aria-labelledby="home-title">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero__content">
+                        <h2 id="home-title" class="hero__title">
+                            Transforme seu corpo, alcance seus objetivos
+                        </h2>
+                        <p class="hero__description">
+                            Aplicativo completo para gerenciamento de treinos, cálculo de IMC e planos alimentares personalizados
+                        </p>
+                        <div class="hero__actions">
+                            <a href="#imc" class="btn btn--primary">
+                                <i class="fas fa-calculator" aria-hidden="true"></i>
+                                Calcular meu IMC
+                            </a>
+                            <a href="#treinos" class="btn btn--secondary">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                                Ver treinos
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero__image">
+                        <div class="hero__illustration">
+                            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-card__content">
+                            <h3 class="stat-card__number">1000+</h3>
+                            <p class="stat-card__label">Usuários ativos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-card__content">
+                            <h3 class="stat-card__number">50+</h3>
+                            <p class="stat-card__label">Exercícios disponíveis</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">
+                            <i class="fas fa-apple-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-card__content">
+                            <h3 class="stat-card__number">30+</h3>
+                            <p class="stat-card__label">Planos alimentares</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMC Calculator Section -->
+        <section id="imc" class="section section--imc" aria-labelledby="imc-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="imc-title" class="section__title">Calcule seu IMC</h2>
+                    <p class="section__description">
+                        Descubra seu Índice de Massa Corporal e receba recomendações personalizadas
+                    </p>
+                </div>
+
+                <div class="imc-calculator">
+                    <form class="imc-form" id="imcForm" novalidate>
+                        <div class="form-group">
+                            <label for="peso" class="form-label">Peso (kg)</label>
+                            <input type="number" id="peso" name="peso" class="form-input" 
+                                   placeholder="Ex: 70.5" step="0.1" min="30" max="300" required>
+                            <span class="form-error" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="altura" class="form-label">Altura (cm)</label>
+                            <input type="number" id="altura" name="altura" class="form-input" 
+                                   placeholder="Ex: 175" min="100" max="250" required>
+                            <span class="form-error" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idade" class="form-label">Idade</label>
+                            <input type="number" id="idade" name="idade" class="form-input" 
+                                   placeholder="Ex: 25" min="10" max="120" required>
+                            <span class="form-error" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genero" class="form-label">Gênero</label>
+                            <select id="genero" name="genero" class="form-select" required>
+                                <option value="">Selecione seu gênero</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </select>
+                            <span class="form-error" aria-live="polite"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--large">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                            Calcular IMC
+                        </button>
+                    </form>
+
+                    <div class="imc-result" id="imcResult" aria-live="polite">
+                        <!-- Result will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Section -->
+        <section id="treinos" class="section section--treinos" aria-labelledby="treinos-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="treinos-title" class="section__title">Treinos Personalizados</h2>
+                    <p class="section__description">
+                        Escolha seu objetivo e descubra os melhores exercícios para você
+                    </p>
+                </div>
+
+                <div class="training-filters">
+                    <button class="filter-btn active" data-filter="todos" aria-pressed="true">
+                        Todos os treinos
+                    </button>
+                    <button class="filter-btn" data-filter="emagrecimento" aria-pressed="false">
+                        Emagrecimento
+                    </button>
+                    <button class="filter-btn" data-filter="hipertrofia" aria-pressed="false">
+                        Hipertrofia
+                    </button>
+                    <button class="filter-btn" data-filter="resistencia" aria-pressed="false">
+                        Resistência
+                    </button>
+                </div>
+
+                <div class="training-grid" id="trainingGrid">
+                    <!-- Training cards will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Nutrition Section -->
+        <section id="alimentacao" class="section section--alimentacao" aria-labelledby="alimentacao-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="alimentacao-title" class="section__title">Plano Alimentar</h2>
+                    <p class="section__description">
+                        Alimentação adequada para alcançar seus objetivos
+                    </p>
+                </div>
+
+                <div class="nutrition-selector">
+                    <h3>Selecione seu objetivo:</h3>
+                    <div class="nutrition-tabs">
+                        <button class="nutrition-tab active" data-objetivo="emagrecimento" aria-pressed="true">
+                            <i class="fas fa-weight" aria-hidden="true"></i>
+                            Emagrecimento
+                        </button>
+                        <button class="nutrition-tab" data-objetivo="ganho-massa" aria-pressed="false">
+                            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                            Ganho de Massa
+                        </button>
+                        <button class="nutrition-tab" data-objetivo="manutencao" aria-pressed="false">
+                            <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                            Manutenção
+                        </button>
+                    </div>
+                </div>
+
+                <div class="nutrition-content" id="nutritionContent">
+                    <!-- Nutrition tables will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Timer Section -->
+        <section id="cronometro" class="section section--cronometro" aria-labelledby="cronometro-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="cronometro-title" class="section__title">Cronômetro de Descanso</h2>
+                    <p class="section__description">
+                        Controle seu tempo de descanso entre as séries
+                    </p>
+                </div>
+
+                <div class="timer-container">
+                    <div class="timer-display" id="timerDisplay">
+                        <span class="timer-minutes">01</span>
+                        <span class="timer-separator">:</span>
+                        <span class="timer-seconds">00</span>
+                    </div>
+
+                    <div class="timer-controls">
+                        <button class="btn btn--primary" id="startTimer" aria-label="Iniciar cronômetro">
+                            <i class="fas fa-play" aria-hidden="true"></i>
+                            Iniciar
+                        </button>
+                        <button class="btn btn--secondary" id="pauseTimer" disabled aria-label="Pausar cronômetro">
+                            <i class="fas fa-pause" aria-hidden="true"></i>
+                            Pausar
+                        </button>
+                        <button class="btn btn--danger" id="resetTimer" aria-label="Reiniciar cronômetro">
+                            <i class="fas fa-stop" aria-hidden="true"></i>
+                            Reiniciar
+                        </button>
+                    </div>
+
+                    <div class="timer-presets">
+                        <h3>Tempo pré-definido:</h3>
+                        <div class="preset-buttons">
+                            <button class="btn btn--outline" data-time="30">30s</button>
+                            <button class="btn btn--outline" data-time="60">1min</button>
+                            <button class="btn btn--outline" data-time="90">1min 30s</button>
+                            <button class="btn btn--outline" data-time="120">2min</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Exercise Modal -->
+    <div class="modal" id="exerciseModal" role="dialog" aria-labelledby="exerciseTitle" aria-hidden="true">
+        <div class="modal__backdrop" data-modal-close></div>
+        <div class="modal__content">
+            <button class="modal__close" data-modal-close aria-label="Fechar modal">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="modal__body" id="exerciseModalBody">
+                <!-- Exercise details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <h3>Fitness Pro</h3>
+                    <p>Seu personal trainer digital para uma vida mais saudável</p>
+                </div>
+                
+                <div class="footer__links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#imc">Calcular IMC</a></li>
+                        <li><a href="#treinos">Treinos</a></li>
+                        <li><a href="#alimentacao">Alimentação</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__contact">
+                    <h4>Contato</h4>
+                    <p>Email: contato@fitnesspro.com</p>
+                    <p>Telefone: (11) 99999-9999</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2024 Aplicativo desenvolvido por Pedro Correia Lopes Filho</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js" defer></script>
+    <script src="js/imc.js" defer></script>
+    <script src="js/training.js" defer></script>
+    <script src="js/nutrition.js" defer></script>
+    <script src="js/timer.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
